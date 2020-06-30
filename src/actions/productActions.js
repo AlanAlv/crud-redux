@@ -5,8 +5,8 @@ import {
 } from '../types'
 
 // Create New Products
-export function createNewProductAction() {
+export function createNewProductAction(product){
     return () => {
-        console.log('action');
+        console.log(product);
     }
 }
