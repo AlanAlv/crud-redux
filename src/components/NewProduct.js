@@ -1,6 +1,28 @@
-import React from 'react'
+import React from 'react';
+import { useDispatch, useSelector } from 'react-redux';
+
+// Redux Actions
+import { createNewProductAction } from '../actions/productActions';
 
 const NewProduct = () => {
+
+    const dispatch = useDispatch()
+
+    // Calls action from productActions
+    const addProduct = () => dispatch( createNewProductAction() );
+
+    // User submits
+    const submitNewProduct = e => {
+        e.preventDefault();
+
+        // Validate Form
+
+        // Check Error
+
+        // Create new Product
+        addProduct();
+    }
+
     return ( 
         <div className="row justify-content-center">
             <div className="col-md-8">
@@ -10,7 +32,9 @@ const NewProduct = () => {
                             Add New Product
                         </h2>
 
-                        <form action="">
+                        <form 
+                            onSubmit={submitNewProduct}
+                        >
 
                             <div className="form-group">
                                 <label>Product Name</label>
