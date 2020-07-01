@@ -29,6 +29,7 @@ const addProductSuccess = product => ({
 })
 
 // Error adding product to db
-const addProductError = () => ({
-    type: ADD_PRODUCT_ERROR
+const addProductError = state => ({
+    type: ADD_PRODUCT_ERROR,
+    payload: state
 })
