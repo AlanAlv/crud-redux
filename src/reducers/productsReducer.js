@@ -34,6 +34,7 @@ export default function(state = initialState, action) {
             };
         case GET_PRODUCTS_ERROR:
         case ADD_PRODUCT_ERROR:
+        case PRODUCT_DELETE_ERROR:
             return {
                 ...state,
                 loading: false,
@@ -50,6 +51,12 @@ export default function(state = initialState, action) {
             return {
                 ...state,
                 productDelete: action.payload
+            }
+        case PRODUCT_DELETE_SUCCESS:
+            return {
+                ...state,
+                products: state.products.filter(product => product.id !== state.productDelete),
+                productDelete: null
             }
         default:
             return state;
