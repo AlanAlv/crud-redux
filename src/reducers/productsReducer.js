@@ -28,12 +28,20 @@ export default function(state = initialState, action) {
                 loading: false,
                 products: [...state.products, action.payload]
             };
+        case GET_PRODUCTS_ERROR:
         case ADD_PRODUCT_ERROR:
             return {
                 ...state,
                 loading: false,
                 error: action.payload
             };
+        case GET_PRODUCTS_SUCCESS:
+            return {
+                ...state,
+                loading: false,
+                error: null,
+                products: action.payload
+            }
         default:
             return state;
     }
