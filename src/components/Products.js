@@ -1,6 +1,19 @@
-import React, { Fragment } from 'react';
+import React, { Fragment, useEffect } from 'react';
+
+// Redux
+import { useSelector, useDispatch } from 'react-redux';
+import { getProductsAction } from '../actions/productActions';
 
 const Products = () => {
+
+    const dispatch = useDispatch();
+
+    useEffect(() => {
+
+        // API call
+        const getProducts = () => dispatch ( getProductsAction());
+        getProducts();
+    }, [])
     return ( 
         <Fragment>
             <h2 className="text-center my-5">
