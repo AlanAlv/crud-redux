@@ -9,6 +9,7 @@ import {
     PRODUCT_DELETE_SUCCESS,
     PRODUCT_DELETE_ERROR,
     SELECT_PRODUCT_EDIT,
+    START_EDIT_PRODUCT,
     PRODUCT_EDIT_SUCCESS,
     PRODUCT_EDIT_ERROR
 } from '../types'
@@ -131,7 +132,7 @@ const deleteProductError = () => ({
 });
 
 // Select product edit
-export function editProductAction(product) {
+export function selectEditProductAction(product) {
     return(dispatch) => {
         dispatch(selectProductEdit(product))
     }
@@ -139,5 +140,24 @@ export function editProductAction(product) {
 
 const selectProductEdit = product => ({
     type: SELECT_PRODUCT_EDIT,
+    payload: product
+})
+
+// Edits product on API & state
+export function editProductAction(product) {
+    return async (dispatch) => {
+        dispatch(editProduct(product));
+
+        try {
+            const result = await clientAxios.put(`/products/${product.id}`, product); 
+            console.log(result);
+        } catch (error) {
+            
+        }
+    }
+}
+
+const editProduct = product => ({
+    type: START_EDIT_PRODUCT,
     payload: product
 })
