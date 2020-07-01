@@ -12,6 +12,10 @@ const NewProduct = () => {
 
     const dispatch = useDispatch()
 
+    // Access store state
+    const loading = useSelector(state => state.products.loading);
+    const error = useSelector(state => state.products.error);
+
     // Calls action from productActions
     const addProduct = product => dispatch( createNewProductAction(product) );
 
@@ -78,6 +82,22 @@ const NewProduct = () => {
                                 Add
                             </button>
                         </form>
+                        {
+                            loading
+                                ?
+                                    <p>Loading...</p>
+                                :
+                                    null
+                        }
+                        {
+                            error
+                                ?
+                                    <p className="alert alert-danger p2 mt-4 text-center">
+                                        There was en error
+                                    </p>
+                                :
+                                    null
+                        }
                     </div>
                 </div>
             </div>
