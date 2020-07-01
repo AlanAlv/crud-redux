@@ -8,7 +8,10 @@ import {
     SELECT_PRODUCT_DELETE,
     PRODUCT_DELETE_SUCCESS,
     PRODUCT_DELETE_ERROR,
-    SELECT_PRODUCT_EDIT
+    SELECT_PRODUCT_EDIT,
+    START_EDIT_PRODUCT,
+    PRODUCT_EDIT_SUCCESS,
+    PRODUCT_EDIT_ERROR
 } from '../types';
 
 // Each reducer has its own state
@@ -37,6 +40,7 @@ export default function(state = initialState, action) {
         case GET_PRODUCTS_ERROR:
         case ADD_PRODUCT_ERROR:
         case PRODUCT_DELETE_ERROR:
+        case PRODUCT_EDIT_ERROR:
             return {
                 ...state,
                 loading: false,
@@ -57,13 +61,26 @@ export default function(state = initialState, action) {
         case PRODUCT_DELETE_SUCCESS:
             return {
                 ...state,
-                products: state.products.filter(product => product.id !== state.productDelete),
+                products: state.products.filter(product => 
+                    product.id !== state.productDelete),
                 productDelete: null
             }
         case SELECT_PRODUCT_EDIT:
             return{
                 ...state,
                 productEdit: action.payload
+            }
+        case PRODUCT_EDIT_SUCCESS:
+            return{
+                ...state,
+                productEdit: null,
+                products: state.products.map(product => 
+                    product.id  === action.payload.id 
+                        ? 
+                            product = action.payload
+                        :
+                            product
+                    )
             }
         default:
             return state;
