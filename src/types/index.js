@@ -15,6 +15,9 @@ export const START_EDIT_PRODUCT = 'START_EDIT_PRODUCT';
 export const PRODUCT_EDIT_SUCCESS = 'PRODUCT_EDIT_SUCCESS';
 export const PRODUCT_EDIT_ERROR = 'PRODUCT_EDIT_ERROR';
 
+export const SHOW_ALERT = 'SHOW_ALERT';
+export const HIDE_ALERT = 'HIDE_ALERT';
+
 
 
 

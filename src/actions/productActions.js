@@ -152,7 +152,7 @@ export function editProductAction(product) {
             const result = await clientAxios.put(`/products/${product.id}`, product); 
             dispatch(editProductSuccess(product));
         } catch (error) {
-            
+            dispatch(editProductError());
         }
     }
 }
