@@ -4,14 +4,18 @@ import {
     ADD_PRODUCT_ERROR,
     START_GET_PRODUCTS,
     GET_PRODUCTS_SUCCESS,
-    GET_PRODUCTS_ERROR
+    GET_PRODUCTS_ERROR,
+    SELECT_PRODUCT_DELETE,
+    PRODUCT_DELETE_SUCCESS,
+    PRODUCT_DELETE_ERROR
 } from '../types';
 
 // Each reducer has its own state
 const initialState = {
     products: [],
     error: null,
-    loading: false
+    loading: false,
+    productDelete: null
 }
 
 export default function(state = initialState, action) {
@@ -41,6 +45,11 @@ export default function(state = initialState, action) {
                 loading: false,
                 error: null,
                 products: action.payload
+            }
+        case SELECT_PRODUCT_DELETE:
+            return {
+                ...state,
+                productDelete: action.payload
             }
         default:
             return state;
