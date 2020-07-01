@@ -23,7 +23,7 @@ export function createNewProductAction(product){
 
         try {
             // Insert to API
-            await clientAxios.post('/produts', product);
+            await clientAxios.post('/products', product);
 
             // Updates state if inserted successfuly
             dispatch(addProductSuccess(product));
@@ -149,7 +149,7 @@ export function editProductAction(product) {
         dispatch(editProduct());
 
         try {
-            const result = await clientAxios.put(`/products/${product.id}`, product); 
+            await clientAxios.put(`/products/${product.id}`, product); 
             dispatch(editProductSuccess(product));
         } catch (error) {
             dispatch(editProductError());
