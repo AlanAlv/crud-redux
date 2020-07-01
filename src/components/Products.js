@@ -63,7 +63,7 @@ const Products = () => {
                     {
                         products.length === 0 
                             ?
-                                'There are no products'
+                                <tr><td>'There are no products'</td></tr>
                             :
                                 products.map(product => (
                                     <Product 
